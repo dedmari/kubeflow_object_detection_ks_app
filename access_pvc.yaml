@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dataaccess
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    volumeMounts:
+    - name: pets-pvc
+      mountPath: /pets_data
+  volumes:
+  - name: pets-pvc
+    persistentVolumeClaim:
+      claimName: pets-pvc
